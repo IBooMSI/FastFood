@@ -1,0 +1,192 @@
+{% load static %}
+<header>
+        <div class="header-area ">
+            <div id="sticky-1" class="main-header-area sticky">
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="/">Головна</a></li>
+                                        <li><a href="/menu">Меню</a></li>
+                                        <li><a href="#">Про компанію</a></li>
+                                        <li><a href="#">Контанкти</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo-img">
+                                <a href="/">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 d-none d-lg-block">
+                            <div class="book_room pull">
+                                <div class="socail_links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {% if not user.is_authenticated %}
+                                <div class="book_btn d-none d-xl-block">
+                                    <ul>
+                                        <li>
+                                            <a class="#"  href="#">+38-093-444-44-44</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="book_btn d-none d-xl-block 1">
+                                    <ul>
+                                        <div class="book_btn d-none d-xl-block 1">
+                                            <li>
+                                                <a href="/accounts/sign_in">
+                                                    <i class="fa fa-user-circle-o"> Вхід</i>
+                                                </a>
+						                    </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                                {% else %}
+                                <div class="book_btn d-none d-xl-block 1" style="margin: 0px auto">
+                                    <li>
+                                        <a href="/accounts/profile">
+                                            <i class="fa fa-user-circle-o"> {{ user.username }}</i>
+                                        </a>
+                                    </li>
+                                </div>
+                                <div class="book_btn d-none d-sm-block 1" style="margin: 0px auto">
+                                    <a href="/accounts/cart" class="dropdown-toggle">
+                                        <i class="fa fa-shopping-cart"> Кошик</i>
+                                        <!-- <div id="count" class="qty">0</div> -->
+                                        <!-- Вот єтаа ... все ломает!! -->
+                                    </a>
+                                    <div class="cart-dropdown">
+                                        <!-- Корзина -->
+                                        <div class="cart-list" id="cart-product">
+                                        </div>
+                                        <!-- Корзина -->
+                                        <div class="cart-summary">
+                                            <h5 id="_count"></h5>
+                                            <h5 id="_amount"></h5>
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="/orders">Перегляд</a>
+                                            <a href="#">Замовлення<i class="fa fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="book_btn d-none d-sm-block 1" style="margin: 0px auto">
+                                    <a href="/accounts/sign_out">
+                                        <i class="fa fa-sign-out"> Вихід</i>
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+<style>
+    .cart-dropdown {
+      position: absolute;
+      width: 300px;
+      background: #FFF;
+      padding: 15px;
+      -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
+      box-shadow: 0px 0px 0px 2px #E4E7ED;
+      z-index: 99;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .dropdown.open>.cart-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-dropdown .cart-list {
+      max-height: 180px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+    .cart-dropdown .cart-list .product-widget {
+      padding: 0px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .cart-dropdown .cart-list .product-widget:last-child {
+      margin-bottom: 0px;
+    }
+
+    .cart-dropdown .cart-list .product-widget .product-img {
+      left: 0px;
+      top: 0px;
+    }
+
+    .cart-dropdown .cart-list .product-widget .product-body .product-price {
+      color: #2B2D42;
+    }
+
+    .cart-dropdown .cart-btns {
+      margin: 0px -17px -17px;
+    }
+
+    .cart-dropdown .cart-btns>a {
+      display: inline-block;
+      width: calc(50% - 0px);
+      padding: 12px;
+      background-color: #D10024;
+      color: #FFF;
+      text-align: center;
+      font-weight: 700;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+    }
+
+    .cart-dropdown .cart-btns>a:first-child {
+      margin-right: -4px;
+      background-color: #1e1f29;
+    }
+
+    .cart-dropdown .cart-btns>a:hover {
+      opacity: 0.9;
+    }
+
+    .cart-dropdown .cart-summary {
+      border-top: 1px solid #E4E7ED;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    .
+
+</style>
