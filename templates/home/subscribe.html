@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    {% load static %}
+    <div class="bradcam_area breadcam_bg overlay">
+        <h3>Успіх:)</h3>
+    </div>
+    <div class="section">
+			<div class="container">
+				<div class="column">
+                    <br>
+
+                    <h3 class="footer_title">Дякуємо за підписку!</h3>
+					<hr>
+					<h3 class="footer_title">На вказану Вами<br>
+					email адресу : <span style="color: LightSlateGray">{{email}}</span>
+					відправлено листа про підписку
+					</h3>
+					<hr>
+					<h3 class="footer_title">
+						Наш менеджер має надіслати Вам контактне повідомлння <br>
+						протягом найближчих 5 хвилин :)
+					</h3>
+                    <br>
+				</div>
+			</div>
+    </div>
+{% endblock content %}
