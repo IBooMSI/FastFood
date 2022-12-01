@@ -1,89 +1,88 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-            <div class="row" style="margin-top: 170px">
-              <div class="col-75">
-                <div class="container" style="text-align: center">
-                  <form action="/action_page.php">
-
-                    <div class="row">
-                      <div class="col-50">
-                        <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="john@example.com">
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                        <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                        <label for="city"><i class="fa fa-institution"></i> City</label>
-                        <input type="text" id="city" name="city" placeholder="New York">
-
+{% load static %}
+<div class="row" style="margin-top: 170px">
+    <div class="col-75">
+        <div class="container" style="text-align: center">
+            <form action="/accounts/confirm" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Ваші дані:</h3>
+                        <label for="labs"><i class="fa fa-user"> Ф.І.О.</i> <br><input type="labs" id="labs" name="labs" placeholder="Пупкін Василь Петрович" required></label>
+                        <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        <label for="adressa"><i class="fa fa-address-card-o"> Адреса:</i> <br><input type="adressa" id="adressa" name="adressa" placeholder="вул.Блакитного 10" required></label>
+                        <label for="city"><i class="fa fa-institution"></i> Місто:</label>
+                        <input type="text" id="city" name="city" placeholder="Київ" required>
                         <div class="row">
-                          <div class="col-50">
-                            <label for="state">State</label>
-                            <input type="text" id="state" name="state" placeholder="NY">
-                          </div>
-                          <div class="col-50">
-                            <label for="zip">Zip</label>
-                            <input type="text" id="zip" name="zip" placeholder="10001">
-                          </div>
+                            <div class="col-50">
+                                <label for="state">Область:</label>
+                                <input type="text" id="state" name="state" placeholder="Київська  ">
+                            </div>
+                            <div class="col-50">
+                                <label for="zip">Індекс:</label>
+                                <input type="text" id="zip" name="zip" placeholder="03041">
+                            </div>
                         </div>
-                      </div>
-
-                      <div class="col-50">
-                        <h3>Payment</h3>
-                        <label for="fname">Accepted Cards</label>
+                    </div>
+                    <div class="col-50">
+                        <h3>Платіж</h3>
+                        <label for="labs">Accepted Cards</label>
                         <div class="icon-container">
-                          <i class="fa fa-cc-visa" style="color:navy;"></i>
-                          <i class="fa fa-cc-amex" style="color:blue;"></i>
-                          <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                          <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
                         </div>
-                        <label for="cname">Name on Card</label>
-                        <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                        <label for="ccnum">Credit card number</label>
+                        <label for="cname">Ім'я власника картки: </label>
+                        <input type="text" id="cname" name="cardname" placeholder="Андрій">
+                        <label for="ccnum">Номер кредитної карточки: </label>
                         <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                        <label for="expmonth">Exp Month</label>
+                        <label for="expmonth">Термін дійсності:</label>
                         <input type="text" id="expmonth" name="expmonth" placeholder="September">
                         <div class="row">
-                          <div class="col-50">
-                            <label for="expyear">Exp Year</label>
-                            <input type="text" id="expyear" name="expyear" placeholder="2018">
-                          </div>
-                          <div class="col-50">
-                            <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" name="cvv" placeholder="352">
-                          </div>
+                            <div class="col-50">
+                                <label for="expyear">Exp Year:</label>
+                                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                            </div>
+                            <div class="col-50">
+                                <label for="cvv">CVV:</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="352">
+                            </div>
                         </div>
-                      </div>
-
                     </div>
-                    <label>
-                      <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                    </label>
-                    <input type="submit" value="Continue to checkout" class="btn">
-                  </form>
                 </div>
-              </div>
-              <div class="col-25">
-                <div class="container">
-                  <h4>Кошик
-                      <span class="price" style="color:black">
-                          <i class="fa fa-shopping-cart">
-                          </i>
-                      <b>4</b>
-                  </span>
-                  </h4>
-                  <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-                  <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-                  <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-                  <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-                  <hr>
-                  <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-                </div>
-              </div>
+                <label>
+                    <input type="checkbox" checked="checked" name="sameadr"> Запам'ятати дані
+                </label>
+                <input type="submit" id="submit" value="Оплатити замовлення" class="btn btn-success b">
+            </form>
+        </div>
+    </div>
+    <div class="col-25">
+        <h4 style="text-align: center">Кошик</h4>
+        {% for order in user_orders %}
+            <div class="container">
+                <h4>
+                    <span class="price" style="color:black">
+                        <a href="/accounts/cart"><i class="fa fa-shopping-cart" style="padding-top: 37px"></i></a>
+                    </span>
+                </h4>
+                <p>
+                    {{ order.product.name }}
+                    <div class="price_cell" style="text-align: left">{{ order.amount }} грн</div>
+                </p>
             </div>
-
+        {% endfor %}
+        <div>
+            <h5 style="text-align: center">Загальна сума до сплати: &nbsp;
+                <span id="total" style="color: red">0.00 грн</span>
+            </h5>
+        </div>
+    </div>
+</div>
 
 <style>
 body {
@@ -141,6 +140,30 @@ input[type=text] {
   border-radius: 3px;
 }
 
+input[type=email] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type=adressa] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type=labs] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
 label {
   margin-bottom: 10px;
   display: block;
@@ -191,5 +214,8 @@ span.price {
   }
 }
 </style>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+<script src="{% static 'js/cart1.js' %}"></script>
 {% endblock content %}

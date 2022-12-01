@@ -1,17 +1,17 @@
 {% load static %}
 <header>
-        <div class="header-area ">
-            <div id="sticky-1" class="main-header-area sticky">
+        <div class="header-area">
+            <div id="sticky1" class="main-header-area sticky">
                 <div class="container-fluid p-0">
                     <div class="row align-items-center no-gutters">
-                        <div class="col-xl-5 col-lg-5">
+                        <div class="col-xl-4 col-lg-5">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">Головна</a></li>
                                         <li><a href="/menu">Меню</a></li>
-                                        <li><a href="#">Про компанію</a></li>
-                                        <li><a href="#">Контанкти</a></li>
+                                        <li><a href="/about">Про компанію</a></li>
+                                        <li><a href="/contact">Відгуки</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -23,7 +23,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-lg-5 d-none d-lg-block">
+                        <div class="col-xl-6 col-lg-5 d-none d-lg-block">
                             <div class="book_room pull">
                                 <div class="socail_links">
                                     <ul>
@@ -57,7 +57,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="book_btn d-none d-xl-block 1">
+                                <div class="book_btn d-none d-xl-block">
                                     <ul>
                                         <div class="book_btn d-none d-xl-block 1">
                                             <li>
@@ -69,40 +69,27 @@
                                     </ul>
                                 </div>
                                 {% else %}
-                                <div class="book_btn d-none d-xl-block 1" style="margin: 0px auto">
+                                <div class="book_btn d-none d-xl-block" style="margin: 0px auto">
                                     <li>
                                         <a href="/accounts/profile">
                                             <i class="fa fa-user-circle-o"> {{ user.username }}</i>
                                         </a>
                                     </li>
                                 </div>
-                                <div class="book_btn d-none d-sm-block 1" style="margin: 0px auto">
-                                    <a href="/accounts/cart" class="dropdown-toggle">
-                                        <i class="fa fa-shopping-cart"> Кошик</i>
-                                        <!-- <div id="count" class="qty">0</div> -->
-                                        <!-- Вот єтаа ... все ломает!! -->
+                                <div class="book_btn d-none d-xl-block" style="margin: 0px auto">
+                                    <a href="/accounts/cart" class="dropdown-toggle" >
+                                        <div id="count" class="fa fa-shopping-cart" style="margin: 0px">
+                                            0
+                                        </div>
                                     </a>
-                                    <div class="cart-dropdown">
-                                        <!-- Корзина -->
-                                        <div class="cart-list" id="cart-product">
-                                        </div>
-                                        <!-- Корзина -->
-                                        <div class="cart-summary">
-                                            <h5 id="_count"></h5>
-                                            <h5 id="_amount"></h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a href="/orders">Перегляд</a>
-                                            <a href="#">Замовлення<i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="book_btn d-none d-sm-block 1" style="margin: 0px auto">
+                                <div class="book_btn d-none d-xl-block" style="margin: 0px auto">
                                     <a href="/accounts/sign_out">
                                         <i class="fa fa-sign-out"> Вихід</i>
                                     </a>
                                 </div>
                                 {% endif %}
+                                <input type="hidden" id="user_id" value="{{user.id}}">
                             </div>
                         </div>
                         <div class="col-12">
@@ -114,79 +101,8 @@
         </div>
 </header>
 <style>
-    .cart-dropdown {
-      position: absolute;
-      width: 300px;
-      background: #FFF;
-      padding: 15px;
-      -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
-      box-shadow: 0px 0px 0px 2px #E4E7ED;
-      z-index: 99;
-      right: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .dropdown.open>.cart-dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cart-dropdown .cart-list {
-      max-height: 180px;
-      overflow-y: scroll;
-      margin-bottom: 15px;
-    }
-
-    .cart-dropdown .cart-list .product-widget {
-      padding: 0px;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-
-    .cart-dropdown .cart-list .product-widget:last-child {
-      margin-bottom: 0px;
-    }
-
-    .cart-dropdown .cart-list .product-widget .product-img {
-      left: 0px;
-      top: 0px;
-    }
-
-    .cart-dropdown .cart-list .product-widget .product-body .product-price {
-      color: #2B2D42;
-    }
-
-    .cart-dropdown .cart-btns {
-      margin: 0px -17px -17px;
-    }
-
-    .cart-dropdown .cart-btns>a {
-      display: inline-block;
-      width: calc(50% - 0px);
-      padding: 12px;
-      background-color: #D10024;
-      color: #FFF;
-      text-align: center;
-      font-weight: 700;
-      -webkit-transition: 0.2s all;
-      transition: 0.2s all;
-    }
-
-    .cart-dropdown .cart-btns>a:first-child {
-      margin-right: -4px;
-      background-color: #1e1f29;
-    }
-
-    .cart-dropdown .cart-btns>a:hover {
-      opacity: 0.9;
-    }
-
-    .cart-dropdown .cart-summary {
-      border-top: 1px solid #E4E7ED;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-    .
 
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+<script src="{% static 'js/cart-display.js' %}"></script>

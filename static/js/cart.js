@@ -1,36 +1,24 @@
 $(document).ready(function() {
-    $('.like-btn').on('click', function() {
-       $(this).toggleClass('is-active');
-    });
 
-    $('.minus-btn').on('click', function(e) {
-        e.preventDefault();
-        var $this = $(this);
-        var $input = $this.closest('div').find('input');
-        var value = parseInt($input.val());
-
-        if (value > 1) {
-            value = value - 1;
-        } else {
-            value = 0;
+    $('#gallery').on('click', '.add-to-cart-btn', (event) => {
+        const user_id = $('#user_id').val();
+        if (user_id == 'None') {
+            alert('Для використання корзини Ви повинні авторизуватись');
+            window.location = '/accounts/sign_in';
         }
+        else {
+            let product_id = $(event.target).prev().val();
+            let price = $(event.target).parent().prev().find('h4').text();
 
-      $input.val(value);
-
-    });
-
-    $('.plus-btn').on('click', function(e) {
-        e.preventDefault();
-        var $this = $(this);
-        var $input = $this.closest('div').find('input');
-        var value = parseInt($input.val());
-
-        if (value < 100) {
-            value = value + 1;
-        } else {
-            value =100;
+            $.ajax({
+                url: '/menu/ajax_cart',
+                data: `uid=${user_id}&pid=${product_id}&price=${parseFloat(price)}`,
+                success: (result) => {
+                    $('#count').text(` Кошик ${result.count} шт.`);
+                    const user_id = $('#user_id').val();
+                }
+            });
         }
-
-        $input.val(value);
     });
+
 });
