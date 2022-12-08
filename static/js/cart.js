@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('#gallery').on('click', '.add-to-cart-btn', (event) => {
+    $('.raw').on('click', '.add-to-cart-btn', (event) => {
         const user_id = $('#user_id').val();
         if (user_id == 'None') {
             alert('Для використання корзини Ви повинні авторизуватись');
